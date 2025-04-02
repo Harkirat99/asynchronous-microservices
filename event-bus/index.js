@@ -8,8 +8,11 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
+const events = [];
+
 app.post("/events", (req, res) => {
   const event = req.body;
+  events.push(event);
   axios.post("http://localhost:4000/events", event).catch((err) => {
     console.log(err.message);
   });
@@ -26,6 +29,11 @@ app.post("/events", (req, res) => {
 
   return res.send({})
 });
+
+app.get("/events", (req, res) => {
+  console.log("event", events)
+  res.send(events)
+})
 
 app.listen(4005, () => {
   console.log("Listening on 4005");
