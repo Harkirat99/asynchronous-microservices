@@ -26,7 +26,7 @@ app.post('/posts', async (req, res) => {
             id,
             title
         }
-    }).catch((erro) => {console.log("ERRO", erro.response.data)});
+    }).catch((erro) => {console.log("ERRO", erro)});
 
     console.log("testing")
     res.send({})
